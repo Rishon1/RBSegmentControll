@@ -15,7 +15,13 @@ class RBSegmentViewController: UIViewController {
         }
     }
     
-    var viewHeight: CGFloat = 0.0
+    var viewHeight: CGFloat = CellHeight - 20 {
+        didSet {
+            var frame = collectionView.frame
+            frame.size = CGSize(width: frame.width, height: viewHeight)
+            collectionView.frame = frame
+        }
+    }
     var currentIndex: Int = 0
     
     required init(_ viewHeight: CGFloat, currentIndex: Int) {
